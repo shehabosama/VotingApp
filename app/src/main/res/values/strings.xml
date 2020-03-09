@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Voting</string>
+    <string name="title">Welcome To Voting App</string>
+    <string name="instructions">Login Using Your FingerPrint</string>
+    <string name="some_text">
+     Some North American Countries!
+ </string>
+</resources>
