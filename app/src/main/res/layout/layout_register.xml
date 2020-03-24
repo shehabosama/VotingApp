@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/loginCard"
+    app:cardCornerRadius="@dimen/loginCardRadius"
+    android:elevation="5dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/loginViewsMargin"
+    android:layout_marginBottom="@dimen/loginViewsMargin"
+    android:backgroundTint="@color/colorPrimary">
+
+        <LinearLayout
+            style="@style/linearParent"
+            android:layout_gravity="center"
+            android:padding="@dimen/loginViewsMargin">
+
+            <TextView
+                style="@style/headerTextPrimary"
+                android:text="@string/register"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_marginTop="@dimen/signup_text_margin_top"
+                android:textColorHint="#ffff"
+                android:theme="@style/parent"
+
+                >
+                <EditText
+                    android:id="@+id/editTextName"
+                    style="@style/modifiedEditText"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:hint="الاسم"
+                    android:textColorHint="#fff"
+                    android:textColor="@color/floatColor"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_marginTop="@dimen/signup_text_margin_top"
+                android:textColorHint="#ffff"
+                android:theme="@style/parent">
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    style="@style/modifiedEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="@string/login_email_hint"
+                    android:textColor="@color/floatColor"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top"
+                    android:textColorHint="#ffff"
+                    android:theme="@style/parent"
+                    android:layout_weight="1">
+                    <EditText
+                        android:id="@+id/editTextConfirmPassword"
+                        style="@style/modifiedEditText"
+                        android:hint="تاكيد كلمه المرور"
+                        android:maxLines="1"
+                        android:inputType="textPassword"
+                        android:textColor="@color/floatColor"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top"
+                    android:textColorHint="#ffff"
+                    android:theme="@style/parent"
+                    android:layout_weight="1">
+                    <EditText
+                        android:id="@+id/editTextPassword"
+                        style="@style/modifiedEditText"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:hint="@string/login_password_hint"
+                        android:textColor="@color/floatColor"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_marginTop="@dimen/signup_text_margin_top"
+                android:textColorHint="#ffff"
+                android:theme="@style/parent">
+                <EditText
+                    android:id="@+id/editTextSsId"
+                    style="@style/modifiedEditText"
+                    android:hint="الرقم القومي"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:textColor="@color/floatColor"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spin_center"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/whiteCardColor"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/signup_text_margin_top"
+                    android:textColorHint="#ffff"
+                    android:theme="@style/parent"
+                    android:layout_weight="1">
+                    <EditText
+                        android:id="@+id/editTextAgeNumber"
+                        style="@style/modifiedEditText"
+                        android:hint="السن"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:textColor="@color/floatColor"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_marginTop="@dimen/signup_text_margin_top"
+                android:textColorHint="#ffff"
+                android:theme="@style/parent">
+                <EditText
+                    android:id="@+id/editTextAddressDetails"
+                    style="@style/modifiedEditText"
+                    android:hint="العنوان التفصيلي"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:textColor="@color/floatColor"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                style="@style/parent"
+                android:onClick="loginLink"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/primaryTextColor"
+                android:text="الجنس"
+                android:layout_marginTop="10dp"/>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/radioGroup"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ذكر"
+                    android:backgroundTint="@color/whiteTextColor"
+                    android:textColor="@color/whiteTextColor"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="5dp"
+                    />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="انثي"
+                    android:backgroundTint="@color/whiteTextColor"
+                    android:textColor="@color/whiteTextColor"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="5dp"
+
+                    />
+            </RadioGroup>
+            <Button
+                style="@style/loginButton"
+                android:layout_gravity="center"
+                android:text="تسجيل"
+                android:textColor="#000"
+                android:id="@+id/btn_register"
+                />
+
+            <TextView
+                style="@style/parent"
+                android:onClick="loginLink"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/primaryTextColor"
+                android:text="@string/signup_login_hint"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+        </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

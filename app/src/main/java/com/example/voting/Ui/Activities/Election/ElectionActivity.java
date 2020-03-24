@@ -1,4 +1,4 @@
-package com.example.voting;
+package com.example.voting.Ui.Activities.Election;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.ListView;
+
+import com.example.voting.ListAdapter;
+import com.example.voting.R;
 
 public class ElectionActivity extends AppCompatActivity {
     int[] images = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.foure, R.drawable.five, R.drawable.six, R.drawable.seven};

@@ -1,4 +1,4 @@
-package com.example.voting;
+package com.example.voting.common.HelperStuffs;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.os.CancellationSignal;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
+
+import com.example.voting.Ui.Activities.Centers.CentersActivity;
+import com.example.voting.Ui.Activities.Election.ElectionActivity;
+import com.example.voting.Ui.Activities.Login.LoginActivity;
 
 @TargetApi(Build.VERSION_CODES.M)
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
@@ -67,7 +71,11 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     public void onAuthenticationSucceeded(
             FingerprintManager.AuthenticationResult result) {
         Toast.makeText(context, "Success!", Toast.LENGTH_LONG).show();
-        context.startActivity(new Intent(context,ElectionActivity.class));
+        if(AppPreferences.getString(Constants.AppPreferences.LOGGED_IN_USER_KEY,context,"").length()>0){
+            context.startActivity(new Intent(context, CentersActivity.class));
+        }else{
+            context.startActivity(new Intent(context, LoginActivity.class));
+        }
 
     }
 

@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">Voting</string>
-    <string name="title">Welcome To Voting App</string>
-    <string name="instructions">Login Using Your FingerPrint</string>
+    <string name="title">مرحبا بكم في برنامج التصويت</string>
+    <string name="instructions">ادخل بصمتك للتاكد من هويتك</string>
     <string name="some_text">
      Some North American Countries!
  </string>
+
+    <string name="register">انشأ حساب جديد</string>
+    <string name="login_email_hint">البريد الاكتروني</string>
+    <string name="login_password_hint">كلمه المرور</string>
+    <string name="signup_login_hint">لديك حساب بالفعل؟ سجل دخول</string>
+    <string name="login_signup_hint">ليس لديك حساب؟ أنشئ حساب جديد</string>
 </resources>

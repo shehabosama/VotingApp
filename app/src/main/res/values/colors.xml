@@ -3,4 +3,15 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <color name="black">#000000</color>
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
+
+    <color name="floatColor">#ffffff</color>
+    <color name="second_main_color">#c9a865</color>
 </resources>
