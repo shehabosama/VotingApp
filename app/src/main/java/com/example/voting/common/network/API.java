@@ -1,6 +1,7 @@
 package com.example.voting.common.network;
 
 
+import com.example.voting.common.model.CandidatesResponse;
 import com.example.voting.common.model.CenterResponse;
 import com.example.voting.common.model.LoginResponse;
 import com.example.voting.common.model.MainResponse;
@@ -23,7 +24,8 @@ public interface API {
     @FormUrlEncoded
     @POST("electionLogin.php")
     Call<MainResponse> electionLogin(@Field("code") String code);
-    @POST("getAllElections.php")
-    Call<CenterResponse> getAllElections();
 
+    @FormUrlEncoded
+    @POST("getAllElections.php")
+    Call<CandidatesResponse> getAllCandidates(@Field("center_id") int centerId);
 }
