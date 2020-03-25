@@ -23,7 +23,7 @@ public class Candidate {
     @Expose
     private String age;
 
-    public void hello(){}
+
     public int getId() {
         return id;
     }
