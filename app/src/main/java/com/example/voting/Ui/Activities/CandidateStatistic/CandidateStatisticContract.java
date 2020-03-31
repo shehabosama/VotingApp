@@ -1,13 +1,13 @@
-package com.example.voting.Ui.Activities.ElectionLogin;
+package com.example.voting.Ui.Activities.CandidateStatistic;
 
-import android.content.Context;
+import com.example.voting.common.model.CandidatesResponse;
 
-public interface ElectionLoginContract {
+public interface CandidateStatisticContract {
 
     interface Model {
         interface onFinishedListener {
             void onFinished(String result);
-
+            void onFinished(CandidatesResponse candidatesResponse);
             void onFailuer(Throwable t);
 
         }
@@ -20,7 +20,7 @@ public interface ElectionLoginContract {
     }
 
     interface Presenter {
-        void performElectionLogin(String registerCode , Context context);
+        void performGetCandidateData(String candidId);
     }
 
 }

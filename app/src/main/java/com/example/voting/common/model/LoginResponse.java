@@ -23,8 +23,8 @@ public class LoginResponse
         @SerializedName("email")
         public String email;
 
-        @SerializedName("center")
-        public String address;
+        @SerializedName("center_id")
+        public int address;
         @SerializedName("ssid")
         public int ssid;
         @SerializedName("gender")

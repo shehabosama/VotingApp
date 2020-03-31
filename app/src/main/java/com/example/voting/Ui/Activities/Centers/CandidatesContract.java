@@ -1,13 +1,14 @@
 package com.example.voting.Ui.Activities.Centers;
 
+import com.example.voting.common.model.CandidatesResponse;
 import com.example.voting.common.model.CenterResponse;
 
-public interface CentersContract {
+public interface CandidatesContract {
 
     interface Model {
         interface onFinishedListener {
             void onFinished(String result);
-            void loadCentersDate(CenterResponse centerResponse);
+            void loadCandidatesData(CandidatesResponse centerResponse);
             void onFailuer(Throwable t);
 
         }
@@ -20,7 +21,9 @@ public interface CentersContract {
     }
 
     interface Presenter {
-        void performGetAllCenters();
+        void performGetAllCandidates(String centerId);
+
+        void updateCandidStatus(String candidId,String userId);
     }
 
 }

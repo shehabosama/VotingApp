@@ -27,6 +27,8 @@ public class Constants {
 
         public static final String USER_TOKEN = "user_token";
         public static final String LAST_UPDATE ="last_update" ;
+        public static final String USER_CENTER = "user_center";
+        public static final String LOGGED_IN_USER_CANDIDATE_KEY = "candidate_id";
     }
 
 

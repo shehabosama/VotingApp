@@ -13,8 +13,8 @@ public class User  {
     public String password;
     @SerializedName("email")
     public String email;
-    @SerializedName("address")
-    public String address;
+    @SerializedName("center")
+    public int address;
     @SerializedName("details_address")
     public String details_address;
     @SerializedName("ssid")

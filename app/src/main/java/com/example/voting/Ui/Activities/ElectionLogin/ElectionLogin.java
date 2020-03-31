@@ -3,6 +3,7 @@ package com.example.voting.Ui.Activities.ElectionLogin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.voting.R;
+import com.example.voting.Ui.Activities.CandidateStatistic.CandidateStatisticsActivity;
 import com.example.voting.common.HelperStuffs.UiUtilities;
 import com.example.voting.common.base.BaseActivity;
 public class ElectionLogin extends BaseActivity implements ElectionLoginContract.Model.onFinishedListener,ElectionLoginContract.View{
@@ -51,7 +53,7 @@ public class ElectionLogin extends BaseActivity implements ElectionLoginContract
     private View.OnClickListener btnLoginListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            presenter.performElectionLogin(textView.getText().toString());
+            presenter.performElectionLogin(textView.getText().toString(),ElectionLogin.this);
         }
     };
     @Override
@@ -71,6 +73,8 @@ public class ElectionLogin extends BaseActivity implements ElectionLoginContract
     public void onFinished(String result) {
         if(result.equals("2")){
             UiUtilities.showToast(getApplicationContext(),"Successfully");
+            startActivity(new Intent(getApplicationContext(), CandidateStatisticsActivity.class));
+
         }else{
             UiUtilities.showToast(getApplicationContext(),"Something went wrong..");
 

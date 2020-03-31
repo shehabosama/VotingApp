@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Ui.Activities.ElectionLogin.ElectionLogin"></activity>
+        <activity android:name=".Ui.Activities.CandidateStatistic.CandidateStatisticsActivity"></activity>
+        <activity android:name=".Ui.Activities.ElectionLogin.ElectionLogin" />
         <activity android:name=".Ui.Activities.Centers.CentersActivity" />
         <activity android:name=".Ui.Activities.Splash.SplashActivity">
             <intent-filter>

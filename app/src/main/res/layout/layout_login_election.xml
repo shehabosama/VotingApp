@@ -20,7 +20,7 @@
 
         <TextView
             style="@style/headerTextPrimary"
-            android:text="تسجيل دخول المصوت"
+            android:text="تسجيل دخول المرشح"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
 
@@ -42,7 +42,7 @@
             <EditText
                 android:id="@+id/editTextPassword"
                 style="@style/modifiedEditText"
-                android:hint="@string/login_password_hint"
+                android:hint="كود الدخول"
                 android:maxLines="1"
                 android:inputType="textPassword"
                 android:textColorHint="#fff"

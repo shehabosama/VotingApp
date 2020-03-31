@@ -22,7 +22,39 @@ public class Candidate {
     @SerializedName("age")
     @Expose
     private String age;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("center")
+    @Expose
+    private String centerName;
+    @SerializedName("voter_total")
+    @Expose
+    private String count = null;
 
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
+    public String getCenterName() {
+        return centerName;
+    }
+
+    public void setCenterName(String centerName) {
+        this.centerName = centerName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public int getId() {
         return id;

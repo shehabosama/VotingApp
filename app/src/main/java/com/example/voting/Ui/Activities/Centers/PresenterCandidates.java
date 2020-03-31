@@ -1,0 +1,73 @@
+package com.example.voting.Ui.Activities.Centers;
+
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.example.voting.common.model.CandidatesResponse;
+import com.example.voting.common.model.MainResponse;
+import com.example.voting.common.network.WebService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
+
+public class PresenterCandidates implements CandidatesContract.Presenter {
+    private CandidatesContract.View mView;
+    private CandidatesContract.Model.onFinishedListener mModel;
+
+    public PresenterCandidates(CandidatesContract.Model.onFinishedListener mModel, CandidatesContract.View mView) {
+        this.mView = mView;
+        this.mModel = mModel;
+    }
+
+
+    @Override
+    public void performGetAllCandidates(String centerId) {
+        mView.showProgress();
+        if(TextUtils.isEmpty(centerId)){
+            mModel.onFinished("Please Make sure if you are login or not");
+            mView.hideProgress();
+        }else{
+            WebService.getInstance().getApi().getAllCandidates(Integer.parseInt(centerId)).enqueue(new Callback<CandidatesResponse>() {
+                @Override
+                public void onResponse(Call<CandidatesResponse> call, Response<CandidatesResponse> response) {
+                    mModel.loadCandidatesData(response.body());
+                    mView.hideProgress();
+                    Log.e(TAG, "onResponse: "+response.body().getCandidates().get(1).getName().toString() );
+                }
+
+                @Override
+                public void onFailure(Call<CandidatesResponse> call, Throwable t) {
+                    Log.e(TAG, "onFailure: "+t.getMessage() );
+                    mView.hideProgress();
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void updateCandidStatus(String candidId,String userId) {
+        mView.showProgress();
+        if(TextUtils.isEmpty(candidId)||TextUtils.isEmpty(userId)){
+            mModel.onFinished("Something Went Wrong...");
+            mView.hideProgress();
+        }else{
+            WebService.getInstance().getApi().updateUserCandidate(Integer.parseInt(candidId),Integer.parseInt(userId)).enqueue(new Callback<MainResponse>() {
+                @Override
+                public void onResponse(Call<MainResponse> call, Response<MainResponse> response) {
+                    mModel.onFinished(response.body().message);
+                    mView.hideProgress();
+                }
+
+                @Override
+                public void onFailure(Call<MainResponse> call, Throwable t) {
+                    Log.e(TAG, "onFailure: "+t.getMessage() );
+                    mView.hideProgress();
+                }
+            });
+        }
+    }
+}

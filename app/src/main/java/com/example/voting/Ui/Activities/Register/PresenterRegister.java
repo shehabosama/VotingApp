@@ -65,7 +65,7 @@ public class PresenterRegister implements RegisterContract.Presenter  {
             user.email = email;
             user.password = password;
             user.ssid = Integer.parseInt(SsId);
-            user.address = country;
+            user.address = Integer.parseInt(country);
             user.details_address = detailsAddress;
             user.age = age;
             user.gender = Integer.parseInt(gender);

@@ -142,7 +142,6 @@
                     style="@style/modifiedEditText"
                     android:hint="العنوان التفصيلي"
                     android:maxLines="1"
-                    android:inputType="number"
                     android:textColor="@color/floatColor"/>
             </com.google.android.material.textfield.TextInputLayout>
             <TextView
