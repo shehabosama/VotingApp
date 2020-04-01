@@ -69,8 +69,13 @@ public class PresenterLogin implements LoginContract.Presenter {
                         user.ssid = response.body().user.ssid;
                         user.address = response.body().user.address;
                         user.gender   = response.body().user.gender;
+                        user.password = response.body().user.password;
+                        user.address_ditals = response.body().user.address_ditals;
                         AppPreferences.setString(Constants.AppPreferences.LOGGED_IN_USER_KEY,String.valueOf(user.id),context);
                         AppPreferences.setString(Constants.AppPreferences.USER_CENTER,String.valueOf(user.address),context);
+                        AppPreferences.setString(Constants.AppPreferences.PASSWORD,user.password,context);
+                        AppPreferences.setString(Constants.AppPreferences.USER_NAME,user.username,context);
+                        AppPreferences.setString(Constants.AppPreferences.ADDRESS_DETAILS,user.address_ditals,context);
                         mModel.onFinished(user);
                         mModel.onFinished(String.valueOf(response.body().status));
                         mLoginView.hideProgress();

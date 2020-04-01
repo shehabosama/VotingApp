@@ -37,4 +37,11 @@ public interface API {
     @FormUrlEncoded
     @POST("getCandidateStatistics.php")
     Call<CandidatesResponse> getInformationAboutCandidates(@Field("candid_id") int candidId);
+    @FormUrlEncoded
+    @POST("UpdateInfromation.php")
+    Call<MainResponse> updateUserInformation(@Field("user_id") int userId,
+                                                   @Field("user_name") String userName,
+                                                   @Field("password")String password,
+                                                   @Field("address_details")String addressDetails);
+
 }

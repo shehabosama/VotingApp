@@ -1,9 +1,11 @@
 package com.example.voting.Ui.Activities.Centers;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 
 import com.example.voting.R;
 import com.example.voting.Ui.Activities.Login.LoginActivity;
+import com.example.voting.Ui.Activities.Settings.SettingsActivity;
 import com.example.voting.common.HelperStuffs.AppPreferences;
 import com.example.voting.common.HelperStuffs.Constants;
 import com.example.voting.common.HelperStuffs.UiUtilities;
@@ -21,6 +24,7 @@ import com.example.voting.common.base.BaseActivity;
 import com.example.voting.common.model.Candidate;
 import com.example.voting.common.model.CandidatesResponse;
 import com.example.voting.common.model.Centers;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +35,7 @@ public class CentersActivity extends BaseActivity implements CandidatesContract.
     private List<Candidate> candidates;
     private ProgressDialog dialog;
     private Toolbar toolbar;
+    private MaterialSearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +54,10 @@ public class CentersActivity extends BaseActivity implements CandidatesContract.
         candidates = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         toolbar = findViewById(R.id.tool_Bar);
-        setToolbar(toolbar,"Main",false,true,false);
+        toolbar.setTitle("الرئيسيه");
+        setSupportActionBar(toolbar);
+        searchView = (MaterialSearchView)findViewById(R.id.search_view);        // MaterialSearchView materialSearchView = new MaterialSearchView(getActivity());
+        searchView.closeSearch();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         presenter = new PresenterCandidates(this,this);
         UiUtilities.showToast(getApplicationContext(),AppPreferences.getString(Constants.AppPreferences.USER_CENTER,CentersActivity.this,""));
@@ -59,23 +67,87 @@ public class CentersActivity extends BaseActivity implements CandidatesContract.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.log_out_menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.log_out){
-            AppPreferences.clear(getApplicationContext());
-            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
+        switch(item.getItemId()){
+            case R.id.log_out:
+                AppPreferences.setString(Constants.AppPreferences.LOGGED_IN_USER_KEY,"",this);
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                break;
+            case R.id.settings:
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                break;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void setListeners() {
-
+        searchView.setOnSearchViewListener(searchViewListener);
+        searchView.setOnQueryTextListener(onQueryTextListener);
     }
+    private MaterialSearchView.SearchViewListener searchViewListener = new MaterialSearchView.SearchViewListener() {
+        @Override
+        public void onSearchViewShown() {
 
+        }
+
+        @Override
+        public void onSearchViewClosed() {
+            // presenter.performGetAllFlats(AppPreferences.getString(Constants.AppPreferences.LOGGED_IN_USER_KEY,getActivity(),"0"));
+            CandidatesAdapter flatAdapter = new CandidatesAdapter(getApplicationContext(), candidates, new CandidatesAdapter.CenterInterAciton() {
+                @Override
+                public void onClickItem(Candidate candidate) {
+                    voteToCandidate(candidate);
+                }
+            });
+            recyclerView.setAdapter(flatAdapter);
+            }
+    };
+    private MaterialSearchView.OnQueryTextListener onQueryTextListener = new MaterialSearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            if(newText != null && !newText.isEmpty()){
+                //   SearchForPeopleAndFrinds(newText);
+                List<Candidate> found = new ArrayList<>();
+                for (Candidate candidate:candidates) {
+                    if(candidate.getName().contains(newText))
+                        found.add(candidate);
+                }
+                CandidatesAdapter flatAdapter = new CandidatesAdapter(getApplicationContext(), found, new CandidatesAdapter.CenterInterAciton() {
+                    @Override
+                    public void onClickItem(Candidate candidate) {
+                        voteToCandidate(candidate);
+                    }
+                });
+
+                recyclerView.setAdapter(flatAdapter);
+
+            }else{
+                CandidatesAdapter flatAdapter = new CandidatesAdapter(getApplicationContext(), candidates, new CandidatesAdapter.CenterInterAciton() {
+                    @Override
+                    public void onClickItem(Candidate candidate) {
+                        voteToCandidate(candidate);
+                    }
+                });
+                recyclerView.setAdapter(flatAdapter);
+            }
+            return true;
+        }
+    };
     @Override
     public void onFinished(String result) {
         UiUtilities.showToast(getApplicationContext(),result);
@@ -99,6 +171,10 @@ public class CentersActivity extends BaseActivity implements CandidatesContract.
 
     @Override
     public void onClickItem(final Candidate candidate) {
+       voteToCandidate(candidate);
+    }
+
+    public void voteToCandidate(final Candidate candidate){
         UiUtilities.showActionDialog(this, "تاكيد", "هل انت متاكد انك تريد اختيار هذا المرشح ؟ لانه لا يمكن التراجع عن قرارك", "تاكيد", "خروج", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -114,7 +190,6 @@ public class CentersActivity extends BaseActivity implements CandidatesContract.
             }
         });
     }
-
     @Override
     public void showProgress() {
         dialog = new ProgressDialog(this);

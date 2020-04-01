@@ -15,6 +15,8 @@ import com.example.voting.common.HelperStuffs.Constants;
 import com.example.voting.common.HelperStuffs.UiUtilities;
 import com.example.voting.common.model.Candidate;
 import com.example.voting.common.model.Centers;
+import com.example.voting.common.network.Urls;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,6 +50,10 @@ public class CandidatesAdapter extends RecyclerView.Adapter<CandidatesAdapter.Ce
             holder.textViewAge.setText("السن : "+candidate.getAge());
             holder.textViewProgram.setText("البرنامج الانتخابي : "+candidate.getElectoral_program());
             holder.textViewSymbol.setText("الرمز : "+candidate.getSymbol());
+            Picasso.with(context)
+                    .load(Urls.MAIN_URL+candidate.getImage()).placeholder(R.drawable.ic_launcher_foreground)
+                    .into(holder.candidImage);
+
         }else {
             holder.setListener(candidate);
             holder.chickImageView.setVisibility(View.INVISIBLE);
@@ -55,6 +61,9 @@ public class CandidatesAdapter extends RecyclerView.Adapter<CandidatesAdapter.Ce
             holder.textViewAge.setText("السن : "+candidate.getAge());
             holder.textViewProgram.setText("البرنامج الانتخابي : "+candidate.getElectoral_program());
             holder.textViewSymbol.setText("الرمز : "+candidate.getSymbol());
+            Picasso.with(context)
+                    .load(Urls.MAIN_URL+candidate.getImage()).placeholder(R.drawable.ic_launcher_foreground)
+                    .into(holder.candidImage);
         }
 
     }
@@ -68,7 +77,7 @@ public class CandidatesAdapter extends RecyclerView.Adapter<CandidatesAdapter.Ce
     }
     public class CenterViewHolder extends RecyclerView.ViewHolder {
         TextView textViewCenterName,textViewAge,textViewProgram,textViewSymbol;
-        ImageView chickImageView;
+        ImageView chickImageView,candidImage;
         public CenterViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewCenterName = itemView.findViewById(R.id.text_center_name);
@@ -76,6 +85,7 @@ public class CandidatesAdapter extends RecyclerView.Adapter<CandidatesAdapter.Ce
             textViewProgram = itemView.findViewById(R.id.text_program_description);
             textViewSymbol = itemView.findViewById(R.id.text_symbol);
             chickImageView = itemView.findViewById(R.id.check_image);
+            candidImage = itemView.findViewById(R.id.candidImage);
 
         }
 

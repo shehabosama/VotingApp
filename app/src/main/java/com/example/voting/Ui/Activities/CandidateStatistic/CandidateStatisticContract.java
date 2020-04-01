@@ -21,6 +21,7 @@ public interface CandidateStatisticContract {
 
     interface Presenter {
         void performGetCandidateData(String candidId);
+        void updateCandidStatus(String candidId,String userId);
     }
 
 }

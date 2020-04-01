@@ -24,4 +24,5 @@ public class User  {
     @SerializedName("gender")
     public int gender;
     public int id;
+    public String address_ditals;
 }

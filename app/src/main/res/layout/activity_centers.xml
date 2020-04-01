@@ -6,7 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".Ui.Activities.Centers.CentersActivity"
     android:orientation="vertical">
-    <include layout="@layout/app_bar_layout"/>
+    <FrameLayout
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/app_bar_layout"
+            />
+
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:searchBackground="@color/colorPrimaryDark"
+            app:searchSuggestionBackground="@color/colorPrimaryDark"
+            app:searchCloseIcon="@drawable/ic_action_navigation_close_inverted"
+            app:searchBackIcon="@drawable/ic_action_navigation_arrow_back_inverted"
+            app:searchSuggestionIcon="@drawable/ic_suggestion"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+
+            />
+    </FrameLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

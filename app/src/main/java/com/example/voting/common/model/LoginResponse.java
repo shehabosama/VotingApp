@@ -23,12 +23,16 @@ public class LoginResponse
         @SerializedName("email")
         public String email;
 
+        @SerializedName("password")
+        public String password;
         @SerializedName("center_id")
         public int address;
         @SerializedName("ssid")
         public int ssid;
         @SerializedName("gender")
         public int gender;
+        @SerializedName("address_ditals")
+        public String address_ditals;;
 
     }
 }

@@ -43,6 +43,7 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_marginVertical="5dp"
                                 android:src="@drawable/vote_icon"
+                                android:id="@+id/candidImage"
                                 />
                             <LinearLayout
                                 android:layout_width="match_parent"
