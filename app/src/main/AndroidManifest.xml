@@ -20,11 +20,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".Ui.Activities.Settings.SettingsActivity"></activity>
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        >
+
+        <activity android:name=".Ui.Activities.Settings.SettingsActivity" />
         <activity android:name=".Ui.Activities.CandidateStatistic.CandidateStatisticsActivity" />
         <activity android:name=".Ui.Activities.ElectionLogin.ElectionLogin" />
-        <activity android:name=".Ui.Activities.Centers.CentersActivity" />
+        <activity android:name=".Ui.Activities.Candidate.CandidateActivity" />
         <activity android:name=".Ui.Activities.Splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

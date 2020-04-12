@@ -5,58 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Ui.Activities.CandidateStatistic.CandidateStatisticsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/back">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginVertical="10dp"
-        android:id="@+id/imageView"
-        />
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:id="@+id/candidName"
-        android:layout_marginVertical="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:id="@+id/centerName"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:id="@+id/electoralProgram"
-        android:layout_marginVertical="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:id="@+id/symbolName"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:id="@+id/age"
-        android:layout_marginVertical="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:id="@+id/countOfVoter"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_vote"
-        android:layout_marginVertical="10dp"
-        android:text="صوت لنفسك"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#D5000000"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="right"
+            android:layout_marginVertical="10dp"
+            android:id="@+id/imageView"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/whiteCardColor"
+            android:id="@+id/candidName"
+            android:layout_marginVertical="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/whiteCardColor"
+            android:id="@+id/centerName"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/whiteCardColor"
+            android:id="@+id/electoralProgram"
+            android:layout_marginVertical="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/whiteCardColor"
+            android:id="@+id/symbolName"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/whiteCardColor"
+            android:id="@+id/age"
+            android:layout_marginVertical="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/whiteCardColor"
+            android:id="@+id/countOfVoter"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_vote"
+            android:layout_marginVertical="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="صوت لنفسك"/>
+    </LinearLayout>
+
 </LinearLayout>

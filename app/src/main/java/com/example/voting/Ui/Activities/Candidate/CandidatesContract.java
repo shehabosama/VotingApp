@@ -1,7 +1,6 @@
-package com.example.voting.Ui.Activities.Centers;
+package com.example.voting.Ui.Activities.Candidate;
 
 import com.example.voting.common.model.CandidatesResponse;
-import com.example.voting.common.model.CenterResponse;
 
 public interface CandidatesContract {
 

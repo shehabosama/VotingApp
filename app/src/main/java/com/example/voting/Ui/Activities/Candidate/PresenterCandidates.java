@@ -1,4 +1,4 @@
-package com.example.voting.Ui.Activities.Centers;
+package com.example.voting.Ui.Activities.Candidate;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,7 +35,7 @@ public class PresenterCandidates implements CandidatesContract.Presenter {
                 public void onResponse(Call<CandidatesResponse> call, Response<CandidatesResponse> response) {
                     mModel.loadCandidatesData(response.body());
                     mView.hideProgress();
-                    Log.e(TAG, "onResponse: "+response.body().getCandidates().get(1).getName().toString() );
+                    Log.e(TAG, "onResponse: "+response.body().getCandidates().get(0).getName().toString() );
                 }
 
                 @Override

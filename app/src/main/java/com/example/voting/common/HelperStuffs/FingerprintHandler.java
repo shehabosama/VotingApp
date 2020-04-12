@@ -11,8 +11,7 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.voting.Ui.Activities.Centers.CentersActivity;
-import com.example.voting.Ui.Activities.Election.ElectionActivity;
+import com.example.voting.Ui.Activities.Candidate.CandidateActivity;
 import com.example.voting.Ui.Activities.Login.LoginActivity;
 
 @TargetApi(Build.VERSION_CODES.M)
@@ -22,6 +21,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     private CancellationSignal cancellationSignal;
     private Context context;
+
 
 
 
@@ -72,9 +72,9 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             FingerprintManager.AuthenticationResult result) {
         Toast.makeText(context, "Success!", Toast.LENGTH_LONG).show();
         if(AppPreferences.getString(Constants.AppPreferences.LOGGED_IN_USER_KEY,context,"").length()>0){
-            context.startActivity(new Intent(context, CentersActivity.class));
+            context.startActivity(new Intent(context, CandidateActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK));
         }else{
-            context.startActivity(new Intent(context, LoginActivity.class));
+            context.startActivity(new Intent(context, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK));
         }
 
     }

@@ -47,18 +47,29 @@ public class PresenterRegister implements RegisterContract.Presenter  {
             mModel.onFinished("Please Complete All data");
             mLoginView.hideProgress();
             mLoginView.loginValidations();
+            Log.d(TAG, "onResponse: "+"i am in the alldata");
+
         } else if (!password.equals(confirmPassword)) {
             mLoginView.loginValidations();
             mLoginView.hideProgress();
+            Log.d(TAG, "onResponse: "+"i am in the passwordr");
+
         } else if(!isEmailValid(email)){
             mLoginView.emailInvalid();
             mLoginView.hideProgress();
+            Log.d(TAG, "onResponse: "+"i am in valldate");
+
         }else if (country.equals("0")){
             mModel.onFinished("Please Select the center");
             mLoginView.hideProgress();
+            Log.d(TAG, "onResponse: "+"i am int the center");
+
         }else if(gender.equals("0")){
             mModel.onFinished("Please Select the gender");
             mLoginView.hideProgress();
+            Log.d(TAG, "onResponse: "+"i am in the error gender");
+
+
         }else {
             User user = new User();
             user.username = userName;
@@ -70,13 +81,14 @@ public class PresenterRegister implements RegisterContract.Presenter  {
             user.age = age;
             user.gender = Integer.parseInt(gender);
 
-
+            Log.d(TAG, "onResponse: "+"i am before the Webservice retrofit");
             WebService.getInstance().getApi().registerUser(user).enqueue(new Callback<MainResponse>() {
                 @Override
                 public void onResponse(Call<MainResponse> call, Response<MainResponse> response) {
                     if (response.body().status == 2) {
                         mLoginView.hideProgress();
                         mModel.onFinished(response.body().message);
+                        Log.d(TAG, "onResponse: "+response.body().message);
                     } else if (response.body().status == 1) {
                         Log.d(TAG, "onResponse: "+response.body().message);
                         mLoginView.hideProgress();
@@ -89,6 +101,7 @@ public class PresenterRegister implements RegisterContract.Presenter  {
                 public void onFailure(Call<MainResponse> call, Throwable t) {
                     mLoginView.hideProgress();
                     mModel.onFinished(t.getMessage());
+                    Log.d(TAG, "onResponse: "+t.getLocalizedMessage());
                 }
             });
         }

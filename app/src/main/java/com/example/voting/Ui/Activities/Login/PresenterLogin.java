@@ -3,6 +3,7 @@ package com.example.voting.Ui.Activities.Login;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -37,6 +38,7 @@ public class PresenterLogin implements LoginContract.Presenter {
     @Override
     public void performLogin(final String email, final String password) {
 
+        mLoginView.showProgress();
         if(TextUtils.isEmpty(email))
         {
             mModel.onFinished("Please write your email address");
@@ -47,7 +49,7 @@ public class PresenterLogin implements LoginContract.Presenter {
                mLoginView.loginValidations();
                mModel.onFinished("Please Write your password");
         }else if(!isEmailValid(email)){
-            mLoginView.emailInvalid();
+            mLoginView.emailInvalid("this is not email");
             mLoginView.hideProgress();
         }else
         {
@@ -76,6 +78,7 @@ public class PresenterLogin implements LoginContract.Presenter {
                         AppPreferences.setString(Constants.AppPreferences.PASSWORD,user.password,context);
                         AppPreferences.setString(Constants.AppPreferences.USER_NAME,user.username,context);
                         AppPreferences.setString(Constants.AppPreferences.ADDRESS_DETAILS,user.address_ditals,context);
+
                         mModel.onFinished(user);
                         mModel.onFinished(String.valueOf(response.body().status));
                         mLoginView.hideProgress();

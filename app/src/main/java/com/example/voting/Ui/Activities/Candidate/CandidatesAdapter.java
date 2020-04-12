@@ -1,4 +1,4 @@
-package com.example.voting.Ui.Activities.Centers;
+package com.example.voting.Ui.Activities.Candidate;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,6 @@ import com.example.voting.common.HelperStuffs.AppPreferences;
 import com.example.voting.common.HelperStuffs.Constants;
 import com.example.voting.common.HelperStuffs.UiUtilities;
 import com.example.voting.common.model.Candidate;
-import com.example.voting.common.model.Centers;
 import com.example.voting.common.network.Urls;
 import com.squareup.picasso.Picasso;
 
@@ -49,7 +48,7 @@ public class CandidatesAdapter extends RecyclerView.Adapter<CandidatesAdapter.Ce
             holder.textViewCenterName.setText("االاسم : "+candidate.getName());
             holder.textViewAge.setText("السن : "+candidate.getAge());
             holder.textViewProgram.setText("البرنامج الانتخابي : "+candidate.getElectoral_program());
-            holder.textViewSymbol.setText("الرمز : "+candidate.getSymbol());
+            holder.textViewSymbol.setText("الرمز : "+candidate.getSymbol()+" \n"+"رقم المرشح : "+candidate.getId());
             Picasso.with(context)
                     .load(Urls.MAIN_URL+candidate.getImage()).placeholder(R.drawable.ic_launcher_foreground)
                     .into(holder.candidImage);
@@ -60,7 +59,7 @@ public class CandidatesAdapter extends RecyclerView.Adapter<CandidatesAdapter.Ce
             holder.textViewCenterName.setText("االاسم : "+candidate.getName());
             holder.textViewAge.setText("السن : "+candidate.getAge());
             holder.textViewProgram.setText("البرنامج الانتخابي : "+candidate.getElectoral_program());
-            holder.textViewSymbol.setText("الرمز : "+candidate.getSymbol());
+            holder.textViewSymbol.setText("الرمز : "+candidate.getSymbol()+" \n"+"رقم المرشح : "+candidate.getId());
             Picasso.with(context)
                     .load(Urls.MAIN_URL+candidate.getImage()).placeholder(R.drawable.ic_launcher_foreground)
                     .into(holder.candidImage);
@@ -96,6 +95,7 @@ public class CandidatesAdapter extends RecyclerView.Adapter<CandidatesAdapter.Ce
                     String userId = AppPreferences.getString(Constants.AppPreferences.LOGGED_IN_USER_KEY,context,"");
                     if(AppPreferences.getBoolean(userId,context,false)){
                         UiUtilities.showToast(context,"لقد ابديت بصوتك ليمكن ان تبدي بصوتك مرتين");
+
                     }else{
                         if(interAction!=null){
                             interAction.onClickItem(candidate);

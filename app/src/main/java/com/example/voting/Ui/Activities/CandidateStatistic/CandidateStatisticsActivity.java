@@ -52,7 +52,7 @@ public class CandidateStatisticsActivity extends BaseActivity implements Candida
         symbol = findViewById(R.id.symbolName);
         imageView = findViewById(R.id.imageView);
         btnVoteToMyself = findViewById(R.id.btn_vote);
-        if(AppPreferences.getBoolean(Constants.AppPreferences.BUTTON_STATUS,this,false)){
+        if(AppPreferences.getBoolean(AppPreferences.getString(Constants.AppPreferences.LOGGED_IN_USER_CANDIDATE_KEY,CandidateStatisticsActivity.this,"0"),this,false)){
             btnVoteToMyself.setVisibility(View.INVISIBLE);
         }else{
             btnVoteToMyself.setVisibility(View.VISIBLE);
@@ -70,7 +70,8 @@ public class CandidateStatisticsActivity extends BaseActivity implements Candida
         @Override
         public void onClick(View view) {
             presenter.updateCandidStatus(AppPreferences.getString(Constants.AppPreferences.LOGGED_IN_USER_CANDIDATE_KEY,CandidateStatisticsActivity.this,"0"),"2");
-            AppPreferences.setBoolean(Constants.AppPreferences.BUTTON_STATUS,true,CandidateStatisticsActivity.this);
+            AppPreferences.setBoolean(AppPreferences.getString(Constants.AppPreferences.LOGGED_IN_USER_CANDIDATE_KEY,CandidateStatisticsActivity.this,"0"),true,CandidateStatisticsActivity.this);
+            btnVoteToMyself.setVisibility(View.INVISIBLE);
         }
     };
     @Override

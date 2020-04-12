@@ -18,7 +18,7 @@ public interface LoginContract
         void hideProgress();
         void loginValidations();
         void loginError();
-        void emailInvalid();
+        void emailInvalid(String erorr);
 
     }
     interface Presenter{

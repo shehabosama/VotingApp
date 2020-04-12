@@ -10,13 +10,11 @@ import android.widget.ProgressBar;
 
 import com.example.voting.R;
 import com.example.voting.Ui.Activities.Main.MainActivity;
-import com.example.voting.common.SqlHelper.myDbAdapter;
 import com.example.voting.common.base.BaseActivity;
 
 public class SplashActivity  extends BaseActivity {
 
     ProgressBar progressBar;
-    myDbAdapter helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +29,6 @@ public class SplashActivity  extends BaseActivity {
 
     @Override
     protected void initializeViews() {
-        helper = new myDbAdapter(this);
         progressBar = (ProgressBar)findViewById(R.id.progress_bar_);
         progressBar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#6200EE"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
@@ -52,10 +49,7 @@ public class SplashActivity  extends BaseActivity {
 
                 finally
                 {
-                    if(helper.getData().length()>0){
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
-                    }
+
                     startActivity(new Intent(getApplicationContext(), MainActivity.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
                 }

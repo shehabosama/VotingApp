@@ -67,7 +67,6 @@ public class WebService  {
 
 
 
-
     public WebService()//this function contain the  retrofit to connection with server and php file
     {
 

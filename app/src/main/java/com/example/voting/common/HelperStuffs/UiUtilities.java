@@ -56,7 +56,6 @@ public class UiUtilities {
     public static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-
     public static void hideSoftKeyboard(Context context) {
         if (context != null) {
             InputMethodManager inputMethodManager =

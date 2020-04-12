@@ -11,17 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.voting.R;
-import com.example.voting.Ui.Activities.Centers.CentersActivity;
+import com.example.voting.Ui.Activities.Candidate.CandidateActivity;
 import com.example.voting.Ui.Activities.ElectionLogin.ElectionLogin;
 import com.example.voting.Ui.Activities.Register.RegisterActivity;
 import com.example.voting.common.HelperStuffs.AppPreferences;
 import com.example.voting.common.HelperStuffs.Constants;
 import com.example.voting.common.HelperStuffs.UiUtilities;
-import com.example.voting.common.SqlHelper.myDbAdapter;
 import com.example.voting.common.base.BaseActivity;
 import com.example.voting.common.model.User;
 
@@ -93,6 +91,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.Model.o
                 hideProgress();
             }else {
                 showProgress();
+                //
+                //123456
                 presenter.performLogin(strEmail,strPassword);
             }
         }
@@ -131,9 +131,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.Model.o
     }
 
     @Override
-    public void emailInvalid() {
+    public void emailInvalid(String erorr) {
         hideProgress();
-        UiUtilities.showToast(LoginActivity.this,"Please Make Sure From Your Email");
+        UiUtilities.showToast(LoginActivity.this,erorr);
     }
     @Override
     public void onFinished(User user) {
@@ -144,7 +144,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.Model.o
         UiUtilities.showToast(LoginActivity.this,result);
         hideProgress();
         if(result.equals("1")){
-            startActivity(new Intent(getApplicationContext(), CentersActivity.class)
+            startActivity(new Intent(getApplicationContext(), CandidateActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
             finish();
         }else{
