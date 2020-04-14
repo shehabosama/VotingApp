@@ -84,12 +84,12 @@ public class CandidateStatisticsActivity extends BaseActivity implements Candida
         Picasso.with(this)
                 .load(Urls.MAIN_URL+candidatesResponse.getCandidates().get(0).getImage()).placeholder(R.drawable.ic_launcher_foreground)
                 .into(imageView);
-        name.setText("الاسم : "+candidatesResponse.getCandidates().get(0).getName());
-        age.setText("السن : "+candidatesResponse.getCandidates().get(0).getAge());
-        electoralProgram.setText("البرنامج الانتخابي : "+candidatesResponse.getCandidates().get(0).getElectoral_program());
-        centerName.setText("المركز : "+candidatesResponse.getCandidates().get(0).getCenterName());
-        symbol.setText("الرمز : "+candidatesResponse.getCandidates().get(0).getSymbol());
-        countOfVoter.setText("عدد الاصوات : "+candidatesResponse.getCandidates().get(0).getCount());
+        name.setText(candidatesResponse.getCandidates().get(0).getName());
+        age.setText(candidatesResponse.getCandidates().get(0).getAge());
+        electoralProgram.setText(candidatesResponse.getCandidates().get(0).getElectoral_program());
+        centerName.setText(candidatesResponse.getCandidates().get(0).getCenterName());
+        symbol.setText(candidatesResponse.getCandidates().get(0).getSymbol());
+        countOfVoter.setText(candidatesResponse.getCandidates().get(0).getCount());
     }
 
     @Override
