@@ -30,7 +30,7 @@ public class CandidateStatisticsActivity extends BaseActivity implements Candida
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_candidate_statistics);
+        setContentView(R.layout.activity_new_profile);
         initializeViews();
         setListeners();
 
