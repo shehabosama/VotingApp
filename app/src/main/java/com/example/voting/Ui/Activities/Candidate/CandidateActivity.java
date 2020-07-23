@@ -58,7 +58,7 @@ public class CandidateActivity extends BaseActivity implements CandidatesContrac
         searchView.closeSearch();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         presenter = new PresenterCandidates(this,this);
-        UiUtilities.showToast(getApplicationContext(),AppPreferences.getString(Constants.AppPreferences.USER_CENTER, CandidateActivity.this,""));
+
         presenter.performGetAllCandidates(AppPreferences.getString(Constants.AppPreferences.USER_CENTER, CandidateActivity.this,""));
     }
 
@@ -154,8 +154,10 @@ public class CandidateActivity extends BaseActivity implements CandidatesContrac
     @Override
     public void loadCandidatesData(CandidatesResponse candidatesResponse) {
         candidates.clear();
-        for(int i=0;i<candidatesResponse.getCandidates().size();i++){
-            candidates.add(candidatesResponse.getCandidates().get(i));
+        if(candidatesResponse.getCandidates().size()>1){
+            for(int i=1;i<candidatesResponse.getCandidates().size();i++){
+                candidates.add(candidatesResponse.getCandidates().get(i));
+            }
         }
 
         CandidatesAdapter adapter = new CandidatesAdapter(this, candidates,this);
